@@ -15,39 +15,41 @@
 15            pref[k] = pref[k-1]+height[k];
 16        }
 17
-18        //left->right
-19        while(i<j && j<n){
-20            if(height[j]>=height[i]){
-21                int total_water = (height[i]*(j-i-1));
-22                int block_in_between = (pref[j]-pref[i]-height[j]);
-23                int actual_trap_water = total_water - block_in_between;
-24                ans += actual_trap_water;
-25                i=j;
-26                j++;
-27            }
-28            else{
-29                j++;
-30            }
-31        }
-32
-33        //right->left
-34        j=n-1;
-35        i=n-2;
-36        while(i<j && i>=0){
-37            if(height[i] > height[j]){                  // did not implemented >= because we will we counting it double 
-38                int total_water = (height[j]*(j-i-1));  // if pillars length is same e.g., [2,0,2]
-39                int block_in_between = (pref[j]-pref[i]-height[j]);
-40                int actual_trap_water = total_water - block_in_between;
-41                ans += actual_trap_water;
-42                j=i;
-43                i--;
-44            }
-45            else{
-46                i--;
-47            }
-48        }
-49        return ans;
-50    }
-51};
-52
-53
+18        int total_water, block_in_between, actual_trap_water;
+19
+20        //left->right
+21        while(i<j && j<n){
+22            if(height[j]>=height[i]){
+23                total_water = (height[i]*(j-i-1));
+24                block_in_between = (pref[j]-pref[i]-height[j]);
+25                actual_trap_water = total_water - block_in_between;
+26                ans += actual_trap_water;
+27                i=j;
+28                j++;
+29            }
+30            else{
+31                j++;
+32            }
+33        }
+34
+35        //right->left
+36        j=n-1;
+37        i=n-2;
+38        while(i<j && i>=0){
+39            if(height[i] > height[j]){                  // did not implemented >= because we will we counting it double 
+40                total_water = (height[j]*(j-i-1));  // if pillars length is same e.g., [2,0,2]
+41                block_in_between = (pref[j]-pref[i]-height[j]);
+42                actual_trap_water = total_water - block_in_between;
+43                ans += actual_trap_water;
+44                j=i;
+45                i--;
+46            }
+47            else{
+48                i--;
+49            }
+50        }
+51        return ans;
+52    }
+53};
+54
+55
