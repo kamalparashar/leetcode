@@ -4,9 +4,9 @@
 4        int i=0, j=numbers.size()-1;
 5        while(i<j){
 6            if(numbers[i]+numbers[j] == target){
-7                return {i+1, j+1};
+7                return {i+1,j+1};
 8            }
-9            else if(numbers[i]+numbers[j] < target){
+9            if(numbers[i]+numbers[j] < target){
 10                i++;
 11            }
 12            else{
